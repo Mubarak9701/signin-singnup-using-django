@@ -1,0 +1,103 @@
+{% extends 'usersin/base.html'%}
+{% block content%}
+<title>Rigister</title>
+{% ifequal error "no"%}
+<script>
+	alert("Registred Successfully..!");
+	window.location=('{% url 'signin' %}');
+</script>
+{% endifequal%}
+
+{% ifequal error "yes"%}
+<script>
+	alert("Something went wrong..! Please tryagain?")
+</script>
+{% endifequal %}
+<!-- <script type="text/javascript">
+	document.addEventListener('DOMContentLoaded',function(){
+		document.querySelector('#submit').disabled=true;
+		
+		document.querySelector('#pwd').onkeyup=() =>{
+			const ab=document.querySelector('#pwd').value;
+			if(ab.length>=8 && ab.isalnum()){
+				ab.style.color='green'
+				document.querySelector('#pwd1').onkeyup=() =>{
+					const abc=document.querySelector('#pwd1').value;
+					if(ab==abc){
+						document.querySelector('#submit').disabled=false;
+					}
+					else{
+						const li=document.querySelector('#pi').value;
+						li.innerHTML="Password didn't match"
+						li.style.color='red'
+						document.querySelector('#submit').disabled=true;
+					}
+				}
+			}
+			else{
+				ab.style.color='red'
+			}
+		}
+	})
+</script> -->
+
+<div class="container-fluid card col-md-4 mt-5" style="background-color: lightgreen">
+	<h1 class="text-center">RegistrationForm</h1>
+
+	<form action="#" method="POST" enctype="multipart/form-data">
+		{% csrf_token %}
+		<b><div class="form-group ">
+			<label for="fname">FirstName:</label>
+			<input type="text" class="form-control" name="first_name" placeholder="Enter Fname" id="fname" required="true">
+		</div>
+
+		<div class="form-group">
+			<label for="lname">LastName:</label>
+			<input type="text" class="form-control" name="last_name" placeholder="Enter Lname" id="lname" required="true">
+		</div>
+
+		<div class="form-group">
+			<label for="uname">UserName:</label>
+			<input type="text" class="form-control" name="username" 
+			placeholder="Enter username" id="uname" required="true">
+		</div>
+		<div class="form-group">
+			<label for="email">Eamil:</label>
+			<input type="email" class="form-control" name="email" 
+			placeholder="Enter Email" id="email" required="true">
+		</div>
+		<div class="form-group">
+			<label for="image">Age:</label>
+			<input type="number" class="form-control" name="age" 
+			placeholder="Enter Age" id="image" required="true">
+		</div>
+		<div class="form-group">
+			<label for="image">Unique ID:</label>
+			<input type="text" class="form-control" name="ui" 
+			placeholder="Enter Unique ID(optional)" id="image">
+			<p style="font-size: 10px;color: blue;">Unique ID should contain alteast 6 alphanumeric characters</p>
+		</div>
+		<div class="form-group">
+			<label for="pwd">Password:</label>
+			<input type="password" class="form-control" name="pswd" 
+			placeholder="Enter Password" id="pwd" required="true">
+			<p style="font-size: 10px;color: blue;">password should contain alteast 8 alphanumeric characters</p>
+		</div>
+		<div class="form-group">
+			<label for="pwd1">Confirm Password:</label>
+			<input type="password" class="form-control" name="pswd1" 
+			placeholder="Confirm Password" id="pwd1" required="true">
+
+		</div>
+		<div class="form-group">
+			<label for="image">Image:</label>
+			<input type="file" class="form-control" name="img" 
+			placeholder="Upload Image" id="image" required="true">
+		</div></b>
+
+		<div class="text-center">
+			<input id="submit" type="submit" value="Register" class="btn btn-outline-primary btn-lg mb-3">
+		</div>
+	</form>
+</div>
+{% endblock%}

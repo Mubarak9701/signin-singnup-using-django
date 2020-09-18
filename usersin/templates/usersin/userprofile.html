@@ -1,0 +1,33 @@
+{% extends 'usersin/base.html' %}
+{% block content %}
+<title>User Pofile</title>
+<div class="container mt-4">
+	<h1 class="text-center">Profile</h1>
+	<table class="table table-borderd" style="background-color: #a4e3">
+		<tr>
+			<th>Full Nmae : </th>
+			<td>{{user.first_name}} {{user.last_name}}</td>
+		</tr>
+		<tr>
+			<th>UserNmae : </th>
+			<td>{{user.username}}</td>
+		</tr>
+		<tr>
+			<th>Email : </th>
+			<td>{{user.email}}</td>
+		</tr>
+		<tr>
+			<th>Image : </th>
+			<td><img src="{{pro.image.url}}" style="height: 100px;width:100px;"></td>
+		</tr>
+		<tr>
+			<th>Age: </th>
+			<td>{{pro.age}}</td>
+		</tr>
+	</table>
+	<div class="text-center">
+		<a href="{% url 'editprofile'%}" class="btn btn-outline-warning btn-lg">EditProfile</a>
+	</div>
+</div>
+
+{% endblock %}
